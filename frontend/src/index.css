@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-anime-dark text-anime-text font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(189, 0, 255, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(0, 240, 255, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(255, 0, 127, 0.04) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Custom Neon Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08080E;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #bd00ff;
+    border-radius: 4px;
+    border: 2px solid #08080E;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00f0ff;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphic Cards */
+  .anime-card {
+    @apply bg-anime-card border border-slate-800/60 rounded-2xl p-6 transition-all duration-300 relative overflow-hidden;
+    backdrop-filter: blur(12px);
+  }
+  .anime-card:hover {
+    @apply border-purple-500/30 bg-anime-cardHover shadow-neon-purple;
+  }
+
+  /* Glowing Cyber Neon Buttons */
+  .btn-neon-blue {
+    @apply bg-transparent border border-anime-blue text-anime-blue font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 hover:bg-anime-blue/10 hover:shadow-neon-blue active:scale-95;
+  }
+  .btn-neon-pink {
+    @apply bg-transparent border border-anime-pink text-anime-pink font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 hover:bg-anime-pink/10 hover:shadow-neon-pink active:scale-95;
+  }
+  .btn-neon-purple {
+    @apply bg-transparent border border-anime-purple text-anime-purple font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 hover:bg-anime-purple/10 hover:shadow-neon-purple active:scale-95;
+  }
+
+  .btn-neon-filled {
+    @apply bg-neon-gradient text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:brightness-110 hover:shadow-neon-glow active:scale-95;
+  }
+
+  /* Custom input glowing outlines */
+  .anime-input {
+    @apply w-full bg-anime-dark/80 border border-slate-800 rounded-xl px-4 py-3 text-anime-text outline-none transition-all duration-300 focus:border-anime-blue focus:ring-1 focus:ring-anime-blue/30 focus:shadow-neon-blue;
+  }
+
+  /* Title font glowing header styling */
+  .neon-text-blue {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+  .neon-text-pink {
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6), 0 0 20px rgba(255, 0, 127, 0.2);
+  }
+  .neon-text-purple {
+    text-shadow: 0 0 10px rgba(189, 0, 255, 0.6), 0 0 20px rgba(189, 0, 255, 0.2);
+  }
+}
+
+/* Cyber grid dynamic styling */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+}
+
+/* Pulsing neon dots */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+.pulse-glow {
+  animation: neon-pulse 3s infinite ease-in-out;
+}

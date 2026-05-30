@@ -1,0 +1,319 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "madaeshm@gmail.com",
+      "password_hash": "$2a$10$nnujqImnNeADlL5CT6570uD5dHs/v36wFClUsypInj1KUYrDERBNW",
+      "username": "GokuAdmin",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2026-05-30T15:40:07.213Z"
+    },
+    {
+      "id": 2,
+      "email": "naruto@narubook.com",
+      "password_hash": "$2a$10$zakp.9VjNA40YduwL9lKFuMBTiRpptvcj0NzgUmG5kJwhau78F/w2",
+      "username": "NarutoUzumaki",
+      "role": "user",
+      "status": "active",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 3,
+      "email": "sasuke@narubook.com",
+      "password_hash": "$2a$10$zakp.9VjNA40YduwL9lKFuMBTiRpptvcj0NzgUmG5kJwhau78F/w2",
+      "username": "SasukeUchiha",
+      "role": "user",
+      "status": "active",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 4,
+      "email": "luffy@narubook.com",
+      "password_hash": "$2a$10$zakp.9VjNA40YduwL9lKFuMBTiRpptvcj0NzgUmG5kJwhau78F/w2",
+      "username": "MonkeyDLuffy",
+      "role": "user",
+      "status": "active",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    }
+  ],
+  "profiles": [
+    {
+      "user_id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop&q=80",
+      "bio": "The legendary administrator of NaruBook. Ready to protect the fandom!",
+      "favorite_anime": "Dragon Ball Z",
+      "fandoms": [
+        "DBZ",
+        "Action",
+        "Shonen"
+      ],
+      "followers_count": 3,
+      "following_count": 3
+    },
+    {
+      "user_id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "bio": "I will become the Hokage! Dattebayo!",
+      "favorite_anime": "Naruto Shippuden",
+      "fandoms": [
+        "Naruto",
+        "Ninjutsu",
+        "Shonen"
+      ],
+      "followers_count": 1,
+      "following_count": 2
+    },
+    {
+      "user_id": 3,
+      "avatar_url": "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&auto=format&fit=crop&q=80",
+      "bio": "Avenging my clan, in the shadows.",
+      "favorite_anime": "Naruto",
+      "fandoms": [
+        "Uchiha",
+        "DarkTheme"
+      ],
+      "followers_count": 2,
+      "following_count": 1
+    },
+    {
+      "user_id": 4,
+      "avatar_url": "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop&q=80",
+      "bio": "I am gonna be the King of the Pirates!",
+      "favorite_anime": "One Piece",
+      "fandoms": [
+        "OnePiece",
+        "Adventure",
+        "StrawHat"
+      ],
+      "followers_count": 3,
+      "following_count": 3
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "content": "Just finished rewatching the Pain Arc in Naruto. The fight between Naruto and Pain is still the absolute pinnacle of anime storytelling! What do you guys think? #Naruto #AnimeDisc",
+      "media_url": "https://media.giphy.com/media/V8tD54CX95khy/giphy.gif",
+      "media_type": "gif",
+      "tags": [
+        "Naruto",
+        "AnimeDisc"
+      ],
+      "group_id": null,
+      "created_at": "2026-05-30T13:40:07.228Z"
+    },
+    {
+      "id": 2,
+      "user_id": 4,
+      "content": "Look at my new Gear 5 dynamic background! Absolutely legendary gear transformation. Who else is caught up with the manga? #OnePiece #Gear5",
+      "media_url": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
+      "media_type": "image",
+      "tags": [
+        "OnePiece",
+        "Gear5"
+      ],
+      "group_id": null,
+      "created_at": "2026-05-30T14:40:07.228Z"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "content": "Chidori training session. Keep working in silence.",
+      "media_url": "",
+      "media_type": "text",
+      "tags": [
+        "Uchiha"
+      ],
+      "group_id": null,
+      "created_at": "2026-05-30T15:10:07.228Z"
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "user_id": 4,
+      "post_id": 1,
+      "reaction_type": "like",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 2,
+      "user_id": 3,
+      "post_id": 1,
+      "reaction_type": "heart",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 3,
+      "user_id": 2,
+      "post_id": 2,
+      "reaction_type": "like",
+      "created_at": "2026-05-30T15:48:50.725Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "post_id": 1,
+      "user_id": 3,
+      "content": "Still took you long enough to beat him, loser.",
+      "parent_id": null,
+      "created_at": "2026-05-30T14:50:07.228Z"
+    },
+    {
+      "id": 2,
+      "post_id": 1,
+      "user_id": 2,
+      "content": "Shut up Sasuke! You were not even there!",
+      "parent_id": 1,
+      "created_at": "2026-05-30T14:58:27.228Z"
+    },
+    {
+      "id": 3,
+      "post_id": 2,
+      "user_id": 1,
+      "content": "Amazing transformation! Gear 5 broke the internet!",
+      "parent_id": null,
+      "created_at": "2026-05-30T15:31:47.228Z"
+    },
+    {
+      "id": 4,
+      "post_id": 1,
+      "user_id": 2,
+      "content": "hi",
+      "parent_id": null,
+      "created_at": "2026-05-30T15:51:50.459Z"
+    }
+  ],
+  "follows": [
+    {
+      "id": 1,
+      "follower_id": 2,
+      "following_id": 3,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 2,
+      "follower_id": 3,
+      "following_id": 2,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 3,
+      "follower_id": 4,
+      "following_id": 2,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 4,
+      "follower_id": 2,
+      "following_id": 4,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 5,
+      "follower_id": 1,
+      "following_id": 3,
+      "created_at": "2026-05-30T16:01:45.646Z"
+    },
+    {
+      "id": 6,
+      "follower_id": 1,
+      "following_id": 4,
+      "created_at": "2026-05-30T16:10:21.711Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "recipient_id": 2,
+      "sender_id": 4,
+      "type": "like",
+      "post_id": 1,
+      "is_read": true,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 2,
+      "recipient_id": 2,
+      "sender_id": 3,
+      "type": "comment",
+      "post_id": 1,
+      "is_read": true,
+      "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 3,
+      "recipient_id": 4,
+      "sender_id": 2,
+      "type": "like",
+      "post_id": 2,
+      "is_read": false,
+      "created_at": "2026-05-30T15:48:50.725Z"
+    },
+    {
+      "id": 4,
+      "recipient_id": 3,
+      "sender_id": 2,
+      "type": "like",
+      "post_id": 3,
+      "is_read": false,
+      "created_at": "2026-05-30T15:51:38.558Z"
+    },
+    {
+      "id": 5,
+      "recipient_id": 3,
+      "sender_id": 1,
+      "type": "follow",
+      "post_id": null,
+      "is_read": false,
+      "created_at": "2026-05-30T16:01:45.646Z"
+    },
+    {
+      "id": 6,
+      "recipient_id": 4,
+      "sender_id": 1,
+      "type": "follow",
+      "post_id": null,
+      "is_read": false,
+      "created_at": "2026-05-30T16:10:21.711Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "reporter_id": 3,
+      "post_id": 2,
+      "comment_id": null,
+      "reason": "spam",
+      "status": "pending",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    }
+  ],
+  "moderation_logs": [
+    {
+      "id": 1,
+      "admin_id": 1,
+      "action": "system_init",
+      "target_id": 0,
+      "details": "NaruBook System Initialized.",
+      "created_at": "2026-05-30T15:40:07.228Z"
+    }
+  ],
+  "system_metrics": {
+    "db_rows": 25,
+    "db_bytes": 48850,
+    "storage_bytes": 1800000000,
+    "bandwidth_bytes": 12500394240,
+    "api_requests": 122386,
+    "vercel_bandwidth_bytes": 19500000000,
+    "vercel_build_minutes": 65,
+    "last_updated": "2026-05-30T15:40:07.228Z"
+  }
+}
