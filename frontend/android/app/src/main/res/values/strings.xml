@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Narubook</string>
+    <string name="title_activity_main">Narubook</string>
+    <string name="package_name">com.narubook.app</string>
+    <string name="custom_url_scheme">com.narubook.app</string>
+</resources>
