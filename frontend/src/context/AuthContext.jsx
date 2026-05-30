@@ -3,7 +3,20 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const getApiBaseUrl = () => {
+  const isNative = 
+    window.Capacitor || 
+    window.location.origin.includes('capacitor://') || 
+    window.location.origin.startsWith('file://') ||
+    window.location.origin.includes('http://localhost:80');
+  
+  if (isNative) {
+    return 'http://10.0.2.2:5000/api';
+  }
+  return 'http://localhost:5000/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 // Create a custom axios instance for global defaults
 export const api = axios.create({
