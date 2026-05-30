@@ -35,6 +35,15 @@
       "role": "user",
       "status": "active",
       "created_at": "2026-05-30T15:40:07.228Z"
+    },
+    {
+      "id": 5,
+      "email": "thsapacademy@gmail.com",
+      "password_hash": "$2a$10$A959E3tB2YpWZzBuU0llFu0Uqia4FCzTSKPDMP.Ddnx5rR8xU2QKK",
+      "username": "Dororo",
+      "role": "user",
+      "status": "active",
+      "created_at": "2026-05-30T17:19:41.849Z"
     }
   ],
   "profiles": [
@@ -92,6 +101,16 @@
       ],
       "followers_count": 3,
       "following_count": 3
+    },
+    {
+      "user_id": 5,
+      "avatar_url": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
+      "banner_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+      "bio": "New NaruBook fan!",
+      "favorite_anime": "None",
+      "fandoms": [],
+      "followers_count": 0,
+      "following_count": 0
     }
   ],
   "posts": [
@@ -308,10 +327,10 @@
   ],
   "system_metrics": {
     "db_rows": 26,
-    "db_bytes": 49800,
+    "db_bytes": 50150,
     "storage_bytes": 1800000000,
-    "bandwidth_bytes": 12500465920,
-    "api_requests": 122455,
+    "bandwidth_bytes": 12500501760,
+    "api_requests": 122493,
     "vercel_bandwidth_bytes": 19500000000,
     "vercel_build_minutes": 65,
     "last_updated": "2026-05-30T15:40:07.228Z"

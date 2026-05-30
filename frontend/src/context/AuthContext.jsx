@@ -11,7 +11,7 @@ const getApiBaseUrl = () => {
     window.location.origin.includes('http://localhost:80');
   
   if (isNative) {
-    return 'http://10.0.2.2:5000/api';
+    return 'http://192.168.1.3:5000/api';
   }
   return 'http://localhost:5000/api';
 };
