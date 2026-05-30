@@ -327,10 +327,10 @@
   ],
   "system_metrics": {
     "db_rows": 26,
-    "db_bytes": 50150,
+    "db_bytes": 50350,
     "storage_bytes": 1800000000,
-    "bandwidth_bytes": 12500501760,
-    "api_requests": 122493,
+    "bandwidth_bytes": 12500522240,
+    "api_requests": 122513,
     "vercel_bandwidth_bytes": 19500000000,
     "vercel_build_minutes": 65,
     "last_updated": "2026-05-30T15:40:07.228Z"

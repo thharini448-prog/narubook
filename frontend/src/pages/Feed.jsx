@@ -378,7 +378,7 @@ const Feed = ({ currentSearchQuery, onSelectUser }) => {
       </div>
 
       {/* 2. Middle Main Section: Timeline & Post Creator */}
-      <div className="lg:col-span-2 flex flex-col gap-6">
+      <div className="lg:col-span-2 w-full max-w-2xl mx-auto flex flex-col gap-6">
         
         {/* Post Creator Widget */}
         <div className="anime-card p-5 border-l-4 border-l-anime-blue">

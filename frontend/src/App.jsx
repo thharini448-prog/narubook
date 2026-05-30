@@ -53,7 +53,7 @@ const AuthPortal = () => {
       <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden border border-purple-500/20 bg-anime-card/85 backdrop-blur-xl shadow-2xl relative z-10">
         
         {/* Left pane: branding and intro */}
-        <div className="p-8 flex flex-col justify-center bg-gradient-to-br from-anime-dark to-anime-cardHover border-r border-slate-900/60 relative">
+        <div className="hidden md:flex p-8 flex-col justify-center bg-gradient-to-br from-anime-dark to-anime-cardHover border-r border-slate-900/60 relative">
           <div className="absolute top-6 left-6 flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-neon-gradient p-0.5 flex items-center justify-center">
               <span className="text-sm font-black text-white italic">NB</span>
@@ -84,6 +84,13 @@ const AuthPortal = () => {
 
         {/* Right pane: Auth forms */}
         <div className="p-8 flex flex-col justify-center">
+          {/* Mobile-only compact logo header */}
+          <div className="flex md:hidden items-center gap-2 mb-6">
+            <div className="w-8 h-8 rounded-lg bg-neon-gradient p-0.5 flex items-center justify-center shadow-neon-glow">
+              <span className="text-sm font-black text-white italic">NB</span>
+            </div>
+            <span className="text-md font-black text-anime-text italic">NaruBook</span>
+          </div>
           <h2 className="text-2xl font-black text-anime-text mb-1 uppercase tracking-wider flex items-center gap-2">
             {authMode === 'login' ? (
               <>
