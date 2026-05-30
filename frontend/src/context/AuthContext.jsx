@@ -11,7 +11,8 @@ const getApiBaseUrl = () => {
     window.location.origin.includes('http://localhost:80');
   
   if (isNative) {
-    return 'http://192.168.1.3:5000/api';
+    // Expose backend dynamically via secure public tunnel URL
+    return 'https://eleven-nights-sleep.loca.lt/api';
   }
   return 'http://localhost:5000/api';
 };
@@ -23,6 +24,7 @@ export const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    'Bypass-Tunnel-Reminder': 'true' // Bypasses localtunnel's anti-phishing landing page in mobile app API requests
   }
 });
 
