@@ -4,17 +4,23 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 const getApiBaseUrl = () => {
+  const isLocal = 
+    window.location.hostname === 'localhost' || 
+    window.location.hostname === '127.0.0.1' ||
+    window.location.origin.includes('http://localhost:');
+
   const isNative = 
     window.Capacitor || 
     window.location.origin.includes('capacitor://') || 
-    window.location.origin.startsWith('file://') ||
-    window.location.origin.includes('http://localhost:80');
+    window.location.origin.startsWith('file://');
   
-  if (isNative) {
-    // Expose backend dynamically via secure public tunnel URL
-    return 'https://eleven-nights-sleep.loca.lt/api';
+  if (isLocal && !isNative) {
+    // Connect to local Express server directly in local browser development
+    return 'http://localhost:5000/api';
   }
-  return 'http://localhost:5000/api';
+  
+  // Use stable, secure Vercel production backend for all deployed sites & compiled mobile apps
+  return 'https://backend-theta-five-64.vercel.app/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();

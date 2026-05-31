@@ -259,7 +259,7 @@ const AdminDashboard = () => {
               )}
 
               {/* Status Indicator Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 {/* Est. Remaining Days */}
                 <div className="anime-card p-5 border-l-4 border-l-anime-blue flex items-center justify-between">
@@ -271,6 +271,19 @@ const AdminDashboard = () => {
                   <BarChart3 className="w-10 h-10 text-anime-blue/20" />
                 </div>
 
+                {/* Backend Server Status */}
+                <div className="anime-card p-5 border-l-4 border-l-anime-blue flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-anime-muted block mb-1">Backend Server</span>
+                    <span className="text-2xl font-black text-anime-blue flex items-center gap-1.5 shadow-neon-blue">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 block pulse-glow"></span>
+                      ONLINE
+                    </span>
+                    <p className="text-[10px] text-anime-muted mt-3">Mode: {healthData?.database_mode || 'Local Mock DB'}</p>
+                  </div>
+                  <HardDrive className="w-10 h-10 text-anime-blue/20" />
+                </div>
+                
                 {/* Vercel App Status */}
                 <div className="anime-card p-5 border-l-4 border-l-anime-pink flex items-center justify-between">
                   <div>

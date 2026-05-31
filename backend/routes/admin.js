@@ -183,7 +183,8 @@ router.get('/health', authenticateToken, requireAdmin, async (req, res) => {
       status_report: statusReport,
       estimated_days_remaining: estimatedDaysRemaining,
       vercel_status: 'online',
-      supabase_status: 'online'
+      supabase_status: 'online',
+      database_mode: db.isMock() ? 'Local Mock DB' : 'Supabase PostgreSQL'
     });
   } catch (err) {
     console.error('Admin Get Health Metrics API Error:', err.message);

@@ -318,7 +318,11 @@ const mockDb = {
     }
   },
   write: (data) => {
-    fs.writeFileSync(MOCK_DB_PATH, JSON.stringify(data, null, 2), 'utf8');
+    try {
+      fs.writeFileSync(MOCK_DB_PATH, JSON.stringify(data, null, 2), 'utf8');
+    } catch (err) {
+      console.warn('Database Layer Warning: mockDb file writing failed (likely running in read-only/serverless environment):', err.message);
+    }
   }
 };
 
