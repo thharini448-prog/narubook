@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navigation from './components/Navigation';
 import Feed from './pages/Feed';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import Chat from './pages/Chat';
+import Diagnostics from './pages/Diagnostics';
 import { KeyRound, Mail, UserPlus, LogIn, RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 const AuthPortal = () => {
@@ -239,6 +240,12 @@ const AuthPortal = () => {
                 </span>
               </p>
             )}
+            <p className="text-anime-muted pt-2 border-t border-slate-900/20">
+              System connection issues?{' '}
+              <span onClick={() => { window.location.hash = '#diagnostics'; }} className="text-anime-blue font-bold hover:underline cursor-pointer uppercase tracking-wider text-[10px]">
+                Run Diagnostics Suite
+              </span>
+            </p>
           </div>
         </div>
 
@@ -299,6 +306,21 @@ const MainLayout = () => {
 
 const AppContent = () => {
   const { token, loading } = useAuth();
+  const [showDiagnostics, setShowDiagnostics] = useState(
+    window.location.hash === '#diagnostics' || window.location.pathname === '/diagnostics'
+  );
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setShowDiagnostics(window.location.hash === '#diagnostics' || window.location.pathname === '/diagnostics');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  if (showDiagnostics) {
+    return <Diagnostics />;
+  }
 
   if (loading) {
     return (
