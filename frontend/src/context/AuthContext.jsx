@@ -28,11 +28,35 @@ export const api = axios.create({
   }
 });
 
-// Set Authorization header synchronously to prevent 401 race conditions during initial mount
-const initialToken = localStorage.getItem('narubook_token');
-if (initialToken) {
-  api.defaults.headers.common['Authorization'] = `Bearer ${initialToken}`;
-}
+// Configure request interceptor to automatically inject current token dynamically
+api.interceptors.request.use(
+  (config) => {
+    const currentToken = localStorage.getItem('narubook_token');
+    if (currentToken) {
+      config.headers['Authorization'] = `Bearer ${currentToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+const parseAxiosError = (err, defaultMsg) => {
+  if (err.response) {
+    // The server responded with a status code outside the 2xx range
+    console.error(`Auth System - API Error [${err.response.status}]:`, err.response.data);
+    return err.response.data?.error || defaultMsg;
+  } else if (err.request) {
+    // The request was made but no response was received (e.g. server offline, localtunnel down)
+    console.error('Auth System - Network/Server connection failure:', err.request);
+    return 'Network Error: Cannot connect to the server. Please verify the backend is running and check your connection.';
+  } else {
+    // Something happened setting up the request
+    console.error('Auth System - Local request setup failure:', err.message);
+    return `Client Error: ${err.message}`;
+  }
+};
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('narubook_token') || null);
@@ -41,14 +65,17 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Set global authorization header
+  // Sync token to localStorage and manage session state
   useEffect(() => {
     if (token) {
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       localStorage.setItem('narubook_token', token);
-      fetchSession();
+      // Fetch session data ONLY if we don't have the user or profile already populated
+      if (!user || !profile) {
+        fetchSession();
+      } else {
+        setLoading(false);
+      }
     } else {
-      delete api.defaults.headers.common['Authorization'];
       localStorage.removeItem('narubook_token');
       setUser(null);
       setProfile(null);
@@ -62,6 +89,7 @@ export const AuthProvider = ({ children }) => {
       response => response,
       error => {
         if (error.response && error.response.status === 403 && 
+            error.response.data && error.response.data.error &&
             (error.response.data.error.includes('blocked') || error.response.data.error.includes('suspended'))) {
           // Force logout immediately if banned or suspended
           logout();
@@ -84,8 +112,13 @@ export const AuthProvider = ({ children }) => {
       setProfile(res.data.profile);
       setError(null);
     } catch (err) {
-      console.error('Session fetch failed, logging out:', err.message);
-      logout();
+      console.error('Session fetch failed:', err.message);
+      const errMsg = parseAxiosError(err, 'Failed to fetch session.');
+      setError(errMsg);
+      // Only clear credentials if the token is explicitly rejected as invalid or expired (401/403)
+      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+        logout();
+      }
     } finally {
       setLoading(false);
     }
@@ -95,11 +128,19 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       const res = await api.post('/auth/login', { email, password });
-      setToken(res.data.token);
-      setUser(res.data.user);
+      
+      const loggedInToken = res.data.token;
+      const loggedInUser = res.data.user;
+      const loggedInProfile = res.data.profile;
+
+      // Populate user and profile FIRST, then set token to bypass redundant fetchSession trigger
+      setUser(loggedInUser);
+      setProfile(loggedInProfile);
+      setToken(loggedInToken);
+      
       return { success: true };
     } catch (err) {
-      const errMsg = err.response?.data?.error || 'Login failed. Please check credentials.';
+      const errMsg = parseAxiosError(err, 'Login failed. Please check credentials.');
       setError(errMsg);
       return { success: false, error: errMsg };
     }
@@ -109,11 +150,18 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       const res = await api.post('/auth/signup', { username, email, password });
-      setToken(res.data.token);
-      setUser(res.data.user);
+      
+      const signedUpToken = res.data.token;
+      const signedUpUser = res.data.user;
+      const signedUpProfile = res.data.profile;
+
+      setUser(signedUpUser);
+      setProfile(signedUpProfile);
+      setToken(signedUpToken);
+      
       return { success: true };
     } catch (err) {
-      const errMsg = err.response?.data?.error || 'Registration failed.';
+      const errMsg = parseAxiosError(err, 'Registration failed.');
       setError(errMsg);
       return { success: false, error: errMsg };
     }
@@ -133,7 +181,7 @@ export const AuthProvider = ({ children }) => {
       setProfile(res.data.profile);
       return { success: true };
     } catch (err) {
-      const errMsg = err.response?.data?.error || 'Profile update failed.';
+      const errMsg = parseAxiosError(err, 'Profile update failed.');
       setError(errMsg);
       return { success: false, error: errMsg };
     }
@@ -145,7 +193,7 @@ export const AuthProvider = ({ children }) => {
       const res = await api.post('/auth/reset-password', { email, newPassword });
       return { success: true, message: res.data.message };
     } catch (err) {
-      const errMsg = err.response?.data?.error || 'Password reset failed.';
+      const errMsg = parseAxiosError(err, 'Password reset failed.');
       setError(errMsg);
       return { success: false, error: errMsg };
     }

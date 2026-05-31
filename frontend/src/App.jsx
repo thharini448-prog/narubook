@@ -21,18 +21,36 @@ const AuthPortal = () => {
     e.preventDefault();
     setSuccessMessage('');
 
+    const trimmedEmail = email.trim();
+    const trimmedUsername = username.trim();
+
+    if (!trimmedEmail) {
+      alert('Email address is required.');
+      return;
+    }
+
+    if (authMode === 'signup' && !trimmedUsername) {
+      alert('Username is required.');
+      return;
+    }
+
+    if (!password) {
+      alert('Password is required.');
+      return;
+    }
+
     if (authMode === 'login') {
-      const res = await login(email, password);
+      const res = await login(trimmedEmail, password);
       if (res.success) {
-        // Success logged in
+        // Success logged in - AuthContext state updates will automatically direct user to dashboard
       }
     } else if (authMode === 'signup') {
-      const res = await signup(username, email, password);
+      const res = await signup(trimmedUsername, trimmedEmail, password);
       if (res.success) {
         alert('Signup completed successfully! Welcome to NaruBook.');
       }
     } else if (authMode === 'reset') {
-      const res = await resetPassword(email, password); // takes email & new password to simulate instantly
+      const res = await resetPassword(trimmedEmail, password); // takes email & new password to simulate instantly
       if (res.success) {
         setSuccessMessage(res.message);
         setTimeout(() => {
